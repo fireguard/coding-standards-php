@@ -1,5 +1,30 @@
 # Padrões de Codificação
 
+## Sumário
+- [Abertura e Fechando de Tag PHP](#open-tag-php)
+- [Indentação](#indentacao)
+- [Internacionalização](#internationalization)
+- [Codificação dos Arquivos](#code-files)
+- [Convenções de Arquivos e Nomes de Classes](#conv-files-names)
+      - [Models](#conv-files-models)
+      - [Banco de Dados](#conv-files-bd)
+      - [Controllers](#conv-files-controllers)
+      - [Repositories](#conv-files-repositories)
+      - [Views](#conv-files-views)
+      - [Requests](#conv-files-requests)
+      - [Routes](#conv-files-routes)
+- [Visibilidade de métodos e variáveis](#visibility-methods-and-variables)
+- [Variáveis](#variables)
+- [Constantes](#constants)
+- [Palavras-chave](#key-words)
+- [Estruturas de Controle](#control-structures)
+- [Declaração Alternativa para o `if`](#alternative-statement-for-if)
+- [Colchetes e Parênteses](#brackets-and-parentheses)
+- [Concatenação de Strings](#concatenating-strings)
+- [Operadores](#operators)
+- [Arrays](#arrays)
+
+<div id='open-tag-php'/>
 ## Abertura e Fechando de Tag PHP
 Para a abertura e fechamento de tag, deve-se utilizar a notação completa do PHP. 
 
@@ -21,6 +46,7 @@ Para a abertura e fechamento de tag, deve-se utilizar a notação completa do PH
 
 Para os arquivos contendo apenas código PHP deve-se sempre omitir a tag de fechamento do PHP (?>). 
 
+<div id='indentacao'/>
 ## Indentação
 Toda a indentação deve ser feita por tabulações (TAB), nunca por espaços. 
 Porém o ajuste até o ponto exato, buscando o alinhamento entre os sinais de iguais deve-se utilizar apenas espaços.
@@ -30,7 +56,7 @@ $var       = 'valor';
 $variable  = 'valor2'; 
 ```
 
-
+<div id='internationalization'/>
 ## Internacionalização
 Para toda impressão de mensagens e conteúdo a ser disponibilizado para o usuário final, deve se fazer uso da função _(‘Valor a ser impresso’). Com essa metodologia iremos possibilitar uma tradução posterior de todas as mensagens.
 
@@ -44,9 +70,11 @@ echo _('Registro inserido com sucesso');
 echo 'Registro inserido com sucesso';
 ```
 
+<div id='code-files'/>
 ## Codificação dos Arquivos
 Os arquivos devem ser salvos com codificação UTF-8.
 
+<div id='conv-files-names'/>
 ## Convenções de Arquivos e Nomes de Classes
 
 Os nomes de arquivos e classes devem ser representados em inglês sempre, salvo em raríssimas excessões explicitamente permitidas pelo coordenador do projeto.
@@ -59,7 +87,7 @@ Abaixo estão alguns exemplos de como nomear arquivos para diferentes tipos de c
 * O Model `OptionValue` deverá ser encontrado em um arquivo chamado OptionValue.php
 * O Helper `BestEverHelper` deverá ser encontrado em um arquivo chamado BestEverHelper.php
 
-
+<div id='conv-files-models'/>
 ### Models
 
 O nome dos Models devem ser escritos no singular e no formato CamelCase. **Car**, **BigCar** e **ReallyBigCar** são todos exemplos de nomes de models que seguem a convenção.
@@ -73,6 +101,7 @@ class Company extends AbstractModel
 }
 ```
 
+<div id='conv-files-bd'/>
 ### Banco de Dados 
 Nomes de tabelas correspondentes à models devem ser escritos no plural e usando underscores. As tabelas correspondentes para os models **Car**, **BigCar** e **ReallyBigCar** são respectivamente **cars**, **big_cars** e **really_big_cars**.
 
@@ -83,6 +112,7 @@ Chaves estrangeiras em associações do tipo hasMany, belongsTo ou hasOne são r
 Tabelas de junções usadas em relacionamentos do tipo Many to Many (HABTM) entre models devem ser nomeadas usando o nome das tabelas dos models referenciados unidas em ordem alfabética (apples_zebras ao invés de zebras_apples).
 Todas as tabelas com que os models interajam junto ao sistema (com exceção das tabelas de junção) requerem uma chave primária para identificar unicamente cada registro.
 
+<div id='conv-files-controllers'/>
 ### Controllers
 
 As classes Controllers devem ser escritas no plural, usando o formato CamelCase e terminar com a palavra Controller. `PeopleController` e `LatestArticlesController` são dois exemplos de nomes de controllers que seguem a convenção.
@@ -97,20 +127,23 @@ class AuthController extends AbstractController
 
 }
 ```
-
+<div id='conv-files-repositories'/>
 ### Repositories
 // Pendente
 
+<div id='conv-files-views'/>
 ### Views
 // Pendente
 
-
+<div id='conv-files-requests'/>
 ### Requests
 // Pendente
 
+<div id='conv-files-routes'/>
 ### Routes
 // Pendente
 
+<div id='visibility-methods-and-variables'/>
 ## Visibilidade de métodos e variáveis
 A visibilidade dos métodos e variáveis devem sempre ser incluídas (public, protected, private).
 
@@ -128,6 +161,7 @@ public function getName()
 public $name;
 ```
 
+<div id='variables'/>
 ## Variáveis
 Os nomes das variáveis devem ser escritos usando o formato lowerCamelCase e serem precedidas de sua visibilidade. 
 Os nomes de variáveis devem descrever seu conteúdo de forma explicita e concisa.
@@ -152,7 +186,7 @@ Para melhorar a legibilidade do código, ao inicializar variáveis, deve ser faz
 $var      = ''; // Comentário sobre a variável $var
 $otherVar = ''; // Comentário sobre a variável $otherVar
 ```
-
+<div id='constants'/>
 ## Constantes
 Para a nomeação de constantes, devem-se seguir as mesmas diretrizes das variáveis, com a ressalva de que no caso das constantes, todas as letras devem estar em maiúsculas.
 
@@ -162,6 +196,7 @@ define('TEXT_DEFAULT', 'TEXTO');
 define('TEMPLATE_PATH', '/home/templates/');
 ```
 
+<div id='key-words'/>
 ## Palavras-chave
 As Palavras-chave como `true`, `false`, `null`, `as`, etc devem ser em letras minúsculas. 
 O mesmo vale para os tipos primitivos como `array`, `integer`, `string`.
@@ -176,6 +211,7 @@ foreach ($array as $key => $value)
 public function myFunction(array $var)
 ```
 
+<div id='control-structures'/>
 ## Estruturas de Controle
 
 As palavras-chave da estrutura, como `if`, `for`, `foreach`, `while`, `switch` devem ser seguidas por um espaço como deve Parâmetro / listas e valores de argumentos. As chaves devem ser colocados em uma nova linha, e pausa deve ter a mesma guia como seu caso.
@@ -224,6 +260,7 @@ switch ($var) {
 }
 ```
 
+<div id='alternative-statement-for-if'/>
 ## Declaração Alternativa para o `if`
 
 Em alguns momentos, o uso do if em sua estrutura completa  é um pouco demais para um código de atribuição condicional simples ou chamada de função. Nesses casos, podemos usar a lógica de execução do PHP para usar uma sintaxe mais curta. 
@@ -242,6 +279,7 @@ else {
 $var = empty($var) ? 'Vazia' : 'Com conteúdo';
 ```
 
+<div id='brackets-and-parentheses'/>
 ## Colchetes e Parênteses
 
 Não se deve usar espaços desnecessários antes ou depois de Colchetes e Parênteses. 
@@ -253,7 +291,9 @@ $array['index'] = 'something';
 for ($i = 0; $i < $max; $i++)
 ```
 
+<div id='concatenating-strings'/>
 ## Concatenação de Strings
+
 As aspas simples são preferíveis às aspas duplas.
 Não deve haver espaços onde se precede a símbolo de concatenação (`.`), apenas separando a variável a ser concatenada.
 
@@ -269,6 +309,7 @@ $string = 'my string' . $var . 'the rest of my string';
 $string = 'my string'.$var.$secondVar.'the rest of my string';
 ```
 
+<div id='operators'/>
 ## Operadores
 
 ```php
@@ -287,7 +328,7 @@ $var++;
 ++$var;
 ```
 
-
+<div id='arrays'/>
 ## Arrays
 
 Para representar uma array deve-se usar a nova notação do php baseada em colchetes, como se vê nos exemplos abaixo.
