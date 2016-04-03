@@ -14,6 +14,7 @@
       - [Views](#conv-files-views)
       - [Requests](#conv-files-requests)
       - [Routes](#conv-files-routes)
+      - [Tests](#conv-files-tests)
 - [Visibilidade de métodos e variáveis](#visibility-methods-and-variables)
 - [Variáveis](#variables)
 - [Constantes](#constants)
@@ -144,6 +145,10 @@ class AuthController extends AbstractController
 ### Routes  [:arrow_up_small:](#summary)
 // Pendente
 
+<div id='conv-files-tests'/>
+### Tests  [:arrow_up_small:](#summary)
+// Pendente
+
 <div id='visibility-methods-and-variables'/>
 ## Visibilidade de métodos e variáveis  [:arrow_up_small:](#summary)
 A visibilidade dos métodos e variáveis devem sempre ser incluídas (public, protected, private).
@@ -189,17 +194,17 @@ $otherVar = ''; // Comentário sobre a variável $otherVar
 ```
 <div id='constants'/>
 ## Constantes  [:arrow_up_small:](#summary)
-Para a nomeação de constantes, devem-se seguir as mesmas diretrizes das variáveis, com a ressalva de que no caso das constantes, todas as letras devem estar em maiúsculas.
+Para a nomeação de constantes, devem-se utilizar apenas letras maiúsculas e usar o underscore para separação das palavras. Assim como as variáveis seus nomes devem descrever seu conteúdo de forma explicita e concisa.
 
 ```php
-define('MY_CONSTANT', 100);
+define('USER_CODE', 100);
 define('TEXT_DEFAULT', 'TEXTO');
 define('TEMPLATE_PATH', '/home/templates/');
 ```
 
 <div id='key-words'/>
 ## Palavras-chave  [:arrow_up_small:](#summary)
-As Palavras-chave como `true`, `false`, `null`, `as`, etc devem ser em letras minúsculas. 
+As Palavras-chave como `true`, `false`, `null`, `as`, etc devem ser representadas em letras minúsculas. 
 O mesmo vale para os tipos primitivos como `array`, `integer`, `string`.
 
 ```php
@@ -215,7 +220,7 @@ public function myFunction(array $var)
 <div id='control-structures'/>
 ## Estruturas de Controle  [:arrow_up_small:](#summary)
 
-As palavras-chave da estrutura, como `if`, `for`, `foreach`, `while`, `switch` devem ser seguidas por um espaço como deve Parâmetro / listas e valores de argumentos. As chaves devem ser colocados em uma nova linha, e pausa deve ter a mesma guia como seu caso.
+As palavras-chave da estrutura, como `if`, `for`, `foreach`, `while`, `switch` devem ser seguidas por um espaço, e logo após, entre parênteses, os argumentos. As chaves devem ser colocadas na mesma linha após um espaço.
 
 ```php
 if ($arg === true) {
@@ -265,7 +270,7 @@ switch ($var) {
 ## Declaração Alternativa para o `if`  [:arrow_up_small:](#summary)
 
 Em alguns momentos, o uso do if em sua estrutura completa  é um pouco demais para um código de atribuição condicional simples ou chamada de função. Nesses casos, podemos usar a lógica de execução do PHP para usar uma sintaxe mais curta. 
-Não use está síntese quando houver mais de uma instrução condicional.
+Não use está síntese quando houver mais que duas instruções condicionais.
 
 ```php
 // Ao invés de usar 
@@ -278,6 +283,10 @@ else {
 
 // Use
 $var = empty($var) ? 'Vazia' : 'Com conteúdo';
+
+// Outros Exemplos
+$var = isset($otherVar) ? $otherVar : 'Default Value';
+$var = (isset($otherVar) && $otherVar > 0) ? $otherVar : 'Default Value';
 ```
 
 <div id='brackets-and-parentheses'/>
@@ -346,7 +355,7 @@ $array = [
 ];
 
 
-// Exemplos de formatos que devem ser evitados:
+// Exemplo de formato que deve ser evitado:
 $array = array (
    'always_load' => array (
        'packages' => array (
@@ -356,5 +365,6 @@ $array = array (
    )
 );
 
+// Exemplo de formato que não deve ser usado
 $array = [ 'always_load' => [ 'packages' => [ 'orm', 'package' => '/my/special/package.php' ] ];
 ```
